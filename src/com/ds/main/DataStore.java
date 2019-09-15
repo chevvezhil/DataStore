@@ -39,17 +39,16 @@ public class DataStore {
 	public  DataStore(String fileName) throws IOException {
 	File dsFile = new File(System.getProperty("user.dir"), fileName);
 
-		/*RandomAccessFile randomAccessFile = new RandomAccessFile(dsFile,"rw");
+		RandomAccessFile randomAccessFile = new RandomAccessFile(dsFile,"rw");
 		randomAccessFile.setLength(1024 * 1024);
 		
-		randomAccessFile.close();*/
+		randomAccessFile.close();
 		dsFile.createNewFile();
 		this.file = fileName;
 	}
 
 	/*
 	 * Function to inset the entries
-	 *  TODO: TTL has to be optinal
 	 */
 
 	public  synchronized  void  insert(String key, JSONObject value, int ttl)
@@ -95,6 +94,7 @@ public class DataStore {
 			String line;
 			while ((line = reader.readLine()) != null) {
 
+				
 				String[] values = line.trim().split("\\|");
 				if (values[0].equalsIgnoreCase(key))
 					return true;
@@ -132,7 +132,11 @@ public class DataStore {
 
 				while ((line = fileReader.readLine()) != null ) {
 
+				if(line.trim().equals(""))
+					break;
+
 					String[] values = line.split("\\|");
+					
 					long duration = TimeUnit.MILLISECONDS.toSeconds((new Date().getTime()) - Long.parseLong(values[2]));
 					
 					if (duration > Integer.parseInt(values[3])) 

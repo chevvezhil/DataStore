@@ -13,7 +13,7 @@ import com.ds.main.DataStore;
 
 public class DsTest {
 	
-	
+	@Test
 	public void insert() throws IOException, NumberFormatException, DataStoreException, JSONException{
 		
 		DataStore ds = new DataStore("check.txt");
@@ -25,7 +25,7 @@ public class DsTest {
 		
 	}
 	
-	
+	@Test
 	public void read() throws IOException, NumberFormatException, DataStoreException, JSONException{
 		
 		DataStore ds = new DataStore("check.txt");
@@ -43,7 +43,7 @@ public class DsTest {
 		
 	}
 	
-	
+	@Test
 	public void checkTtl() throws IOException, NumberFormatException, DataStoreException{
 		DataStore ds = new DataStore("check.txt");
 		assertEquals(true, ds.removeExpiredValue());
