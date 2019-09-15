@@ -38,11 +38,14 @@ public class DataStore {
 
 	public  DataStore(String fileName) throws IOException {
 	File dsFile = new File(System.getProperty("user.dir"), fileName);
-
+/*
 		RandomAccessFile randomAccessFile = new RandomAccessFile(dsFile,"rw");
-		randomAccessFile.setLength(1024 * 1024);
 		
-		randomAccessFile.close();
+		long l = 9999999990L;
+		
+		randomAccessFile.setLength(1024L * 1024L);
+		
+		randomAccessFile.close();*/
 		dsFile.createNewFile();
 		this.file = fileName;
 	}
