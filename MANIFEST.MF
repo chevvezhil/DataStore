@@ -1,0 +1,1 @@
+Premain-Class: src.com.ds.config.ObjectSizeFectcher
